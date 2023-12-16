@@ -1,4 +1,4 @@
-package pl.qbawalat.filerelationsresolver;
+package pl.qbawalat.file.relations.resolver.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -6,8 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class FileRelationsResolverApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {}
 }
