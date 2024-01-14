@@ -1,4 +1,4 @@
-package pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver;
+package pl.qbawalat.file.relations.resolver.api.file.service.merger;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver;
+package pl.qbawalat.file.relations.resolver.api.file.service.merger;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,7 @@ import pl.qbawalat.file.relations.resolver.api.file.domain.ParsedFileContent;
 import pl.qbawalat.file.relations.resolver.api.file.domain.ParsedRecord;
 import pl.qbawalat.file.relations.resolver.api.file.enums.ColumnHeader;
 import pl.qbawalat.file.relations.resolver.api.file.exception.FileRelationException;
-import pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver.column.RelatedColumnResolverService;
+import pl.qbawalat.file.relations.resolver.api.file.service.merger.column.RelatedColumnResolverService;
 import pl.qbawalat.file.relations.resolver.api.file.util.ParsedFileAnalyzer;
 
 @Service

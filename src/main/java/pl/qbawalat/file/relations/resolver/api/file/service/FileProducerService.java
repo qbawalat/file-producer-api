@@ -9,8 +9,8 @@ import pl.qbawalat.file.relations.resolver.api.file.domain.ParsedFile;
 import pl.qbawalat.file.relations.resolver.api.file.domain.RelatedFilesContainer;
 import pl.qbawalat.file.relations.resolver.api.file.dto.FileDto;
 import pl.qbawalat.file.relations.resolver.api.file.service.identifier.FileIdentifierService;
+import pl.qbawalat.file.relations.resolver.api.file.service.merger.FileMergerService;
 import pl.qbawalat.file.relations.resolver.api.file.service.parser.factory.FileParserServiceFactory;
-import pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver.FileMergerService;
 import pl.qbawalat.file.relations.resolver.api.file.service.sorter.FileRecordsSorterService;
 
 /**

@@ -1,4 +1,4 @@
-package pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver.column;
+package pl.qbawalat.file.relations.resolver.api.file.service.merger.column;
 
 import java.util.Map;
 import java.util.Optional;

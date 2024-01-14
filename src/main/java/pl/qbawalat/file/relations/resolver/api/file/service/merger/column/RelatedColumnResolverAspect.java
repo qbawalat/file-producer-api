@@ -1,4 +1,4 @@
-package pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver.column;
+package pl.qbawalat.file.relations.resolver.api.file.service.merger.column;
 
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class RelatedColumnResolverAspect {
     private final RequestScopedLogger requestScopedLogger;
 
     @Pointcut(
-            "execution(* pl.qbawalat.file.relations.resolver.api.file.service.relations.resolver.column.RelatedColumnResolverService.resolveRelatedColumnValue(..))")
+            "execution(* pl.qbawalat.file.relations.resolver.api.file.service.merger.column.RelatedColumnResolverService.resolveRelatedColumnValue(..))")
     public void resolveRelatedColumnValueMethod() {}
 
     @AfterReturning(value = "resolveRelatedColumnValueMethod()", returning = "resolvedRecord")
