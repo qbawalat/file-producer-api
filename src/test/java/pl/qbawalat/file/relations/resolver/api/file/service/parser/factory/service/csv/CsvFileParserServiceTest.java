@@ -33,7 +33,7 @@ class CsvFileParserServiceTest {
 
     @Test
     void parseFile() throws IOException {
-        MockMultipartFile mockMultipartFileFromCsv = createMockMultipartFileFromCsv(BASE_PATH + "properMainFile.csv");
+        MockMultipartFile mockMultipartFileFromCsv = createMockMultipartFileFromCsv(BASE_PATH + "properAnimals.csv");
         ParsedFile parsedFileMock = ParsedFileMocker.mockParsedFileWithOneRecord(
                 mockMultipartFileFromCsv.getOriginalFilename(), "code", "dog", "sort_order", "1", "type", "canine");
 
@@ -47,8 +47,8 @@ class CsvFileParserServiceTest {
     @Test
     void parseFiles() throws IOException {
         List<MultipartFile> multipartFilesMock = List.of(
-                createMockMultipartFileFromCsv(BASE_PATH + "properMainFile.csv"),
-                createMockMultipartFileFromCsv(BASE_PATH + "properSupplierFile.csv"));
+                createMockMultipartFileFromCsv(BASE_PATH + "properAnimals.csv"),
+                createMockMultipartFileFromCsv(BASE_PATH + "properCodes.csv"));
         List<ParsedFile> parsedFilesMock = List.of(
                 ParsedFileMocker.mockParsedFileWithOneRecord(
                         multipartFilesMock.get(0).getOriginalFilename(),

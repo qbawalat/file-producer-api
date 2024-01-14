@@ -27,7 +27,7 @@ class FileControllerValidationsIntegrationTests {
     @Test
     void unprocessableEntityWhenEmptyCellHeader() throws Exception {
         MockMultipartFile file = createMultipartFileMock(
-                "animal.csv", "text/csv", createCsvContent(createRecord("", "type"), createRecord("dog", "canine")));
+                "animals.csv", "text/csv", createCsvContent(createRecord("", "type"), createRecord("dog", "canine")));
         MockMultipartHttpServletRequestBuilder multipart = createRequestMock(List.of(file), true);
         mvc.perform(multipart).andExpect(MockMvcResultMatchers.status().isUnprocessableEntity());
     }

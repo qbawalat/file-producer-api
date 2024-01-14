@@ -1,5 +1,6 @@
 package pl.qbawalat.file.relations.resolver.api.file.service.identifier;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import jakarta.validation.ConstraintViolationException;
@@ -8,14 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.qbawalat.file.relations.resolver.api.file.domain.ParsedFile;
+import pl.qbawalat.file.relations.resolver.api.file.domain.RelatedFilesContainer;
+import pl.qbawalat.file.relations.resolver.api.util.ParsedFileMocker;
 
 @SpringBootTest
 class FileIdentifierServiceTest {
-    private static final String ID_HEADER = "code";
-    private static final String MAIN_ID_VALUE = "dog";
-    private static final String TYPES_SUPPLIER_ID_VALUE = "canine";
-    private static final String TRICKS_SUPPLIER_ID_VALUE = "trick";
-
     @Autowired
     private FileIdentifierService fileIdentifier;
 
@@ -24,5 +22,21 @@ class FileIdentifierServiceTest {
         List<ParsedFile> parsedFiles = List.of();
 
         assertThrows(ConstraintViolationException.class, () -> fileIdentifier.identifyFiles(parsedFiles));
+    }
+
+    @Test
+    void identifyFiles() {
+        ParsedFile mainFile =
+                ParsedFileMocker.mockParsedFileWithOneRecord("animals.csv", "code", "dog", "type", "canine");
+        ParsedFile supplierFile = ParsedFileMocker.mockParsedFileWithOneRecord("types.csv", "code", "canine");
+        List<ParsedFile> parsedFiles = List.of(mainFile, supplierFile);
+
+        RelatedFilesContainer relatedFilesContainer = fileIdentifier.identifyFiles(parsedFiles);
+
+        assertEquals(
+                mainFile.fileName(), relatedFilesContainer.mainFiles().get(0).fileName());
+        assertEquals(
+                supplierFile.fileName(),
+                relatedFilesContainer.supplierFiles().get(0).fileName());
     }
 }

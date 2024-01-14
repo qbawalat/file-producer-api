@@ -25,9 +25,9 @@ class FileControllerE2eTests {
     private MockMvc mvc;
 
     @Test
-    void givenOneCsvFile_thenConvertToJson() throws Exception {
+    void convertOneCsvToJson() throws Exception {
         MockMultipartFile file = createMultipartFileMock(
-                "animal.csv",
+                "animals.csv",
                 "text/csv",
                 createCsvContent(createRecord("code", "type"), createRecord("dog", "canine")));
         MockMultipartHttpServletRequestBuilder multipart = createRequestMock(List.of(file), true);
@@ -39,7 +39,7 @@ class FileControllerE2eTests {
     }
 
     @Test
-    void givenTwoCsvFiles_whenOneMainAndOneSupplyingFile_thenConvertToJson() throws Exception {
+    void convertTwoCsvToJson() throws Exception {
         MockMultipartFile mainFile = createMultipartFileMock(
                 "animals.csv",
                 "text/csv",
@@ -55,12 +55,12 @@ class FileControllerE2eTests {
                         MockMvcResultMatchers.content()
                                 .json(
                                         """
-								[{"code":"dog","type":{"code":"canine","description":"woof woof"}}]
-								"""));
+												[{"code":"dog","type":{"code":"canine","description":"woof woof"}}]
+												"""));
     }
 
     @Test
-    void givenThreeCsvFiles_whenOneMainAndTwoSupplyingFiles_thenConvertToJson() throws Exception {
+    void convertThreeCsvToJson() throws Exception {
         MockMultipartFile mainFile = createMultipartFileMock(
                 "animals.csv",
                 "text/csv",
@@ -81,7 +81,7 @@ class FileControllerE2eTests {
                         MockMvcResultMatchers.content()
                                 .json(
                                         """
-								[{"code":"dog","type":{"code":"canine","description":"woof woof"}}]
-								"""));
+												[{"code":"dog","type":{"code":"canine","description":"woof woof"}}]
+												"""));
     }
 }

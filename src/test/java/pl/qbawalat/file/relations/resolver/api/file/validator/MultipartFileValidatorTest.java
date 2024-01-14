@@ -47,7 +47,7 @@ class MultipartFileValidatorTest {
 
     @Test
     void rejectMissingFileParam() {
-        MultipartFile multipartFile = createMockMultipartFile("image/jpeg");
+        MultipartFile multipartFile = createMockMultipartFileWithHardcodedName("image/jpeg");
 
         when(requestParamsReader.getFileType()).thenReturn(Optional.empty());
 
@@ -58,7 +58,7 @@ class MultipartFileValidatorTest {
     }
 
     private void testFilesTypesComparison(String paramFileType, String actualFileType, boolean expectedResult) {
-        MultipartFile multipartFile = createMockMultipartFile(actualFileType);
+        MultipartFile multipartFile = createMockMultipartFileWithHardcodedName(actualFileType);
         when(requestParamsReader.getFileType()).thenReturn(Optional.of(paramFileType));
 
         boolean result = multipartFileValidator.isValid(multipartFile, constraintValidatorContext);
@@ -67,9 +67,10 @@ class MultipartFileValidatorTest {
         verify(requestParamsReader, times(1)).getFileType();
     }
 
-    private MultipartFile createMockMultipartFile(String contentType) {
+    private MultipartFile createMockMultipartFileWithHardcodedName(String contentType) {
         MultipartFile multipartFile = mock(MultipartFile.class);
         when(multipartFile.getContentType()).thenReturn(contentType);
+        when(multipartFile.getOriginalFilename()).thenReturn("animals.csv");
         return multipartFile;
     }
 }
