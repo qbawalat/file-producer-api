@@ -40,6 +40,7 @@ public class FileRecordsSorterService {
                         "Sort column value must be of String type: " + ColumnHeader.SORT_ORDER.getValue());
             }
         } catch (NumberFormatException numberFormatException) {
+            // TODO handle all parsing errors in FileParser
             throw new FileParseException("Sort column value must be a numeric String: " + sortColumnValue.toString());
         }
     }

@@ -12,6 +12,8 @@ import org.springframework.util.ResourceUtils;
 
 public class MultipartFileMocker {
 
+    private MultipartFileMocker() {}
+
     public static MockMultipartFile createMockMultipartFileFromCsv(String fileName) throws IOException {
         String filePath = "classpath:" + fileName;
         File file = ResourceUtils.getFile(filePath);

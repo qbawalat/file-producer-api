@@ -53,8 +53,7 @@ public class FileMergerService {
             return typeGuardedColumnValue;
         } else {
             throw new FileRelationException(
-                    "The value in the column that links two files must be a String type. Column name: "
-                            + relationColumnName);
+                    "Unresolvable file relations. Expected existing, String valued column: " + relationColumnName);
         }
     }
 }
