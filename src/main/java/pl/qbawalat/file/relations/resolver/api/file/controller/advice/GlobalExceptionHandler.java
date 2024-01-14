@@ -1,5 +1,6 @@
 package pl.qbawalat.file.relations.resolver.api.file.controller.advice;
 
+import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     public ResponseEntity<ResponseError> handleException(MethodArgumentTypeMismatchException ex) {
         return toResponseEntity("Type mismatch of parameter: " + ex.getPropertyName(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ResponseEntity<ResponseError> handleException(ConstraintViolationException ex) {
+        return toResponseEntity("Constraint validation failed: " + ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({BusinessLogicException.class})
